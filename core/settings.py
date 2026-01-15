@@ -196,3 +196,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 5MB media limit (handled in views, but good to have a reference)
 MAX_UPLOAD_SIZE = 5242880 
+
+# CSRF and Session Security for Railway/Production
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.railway.app',
+    'https://*.up.railway.app',
+]
+
+# Ensure sessions work over HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
